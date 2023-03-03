@@ -10,5 +10,4 @@ class Comment < ApplicationRecord
   def update_post_comments_counter(_comment)
     post.increment!(:comments_counter)
   end
-  
 end
