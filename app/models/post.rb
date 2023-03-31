@@ -8,7 +8,15 @@ class Post < ApplicationRecord
   validates :likes_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :text, presence: true
 
-  def update_user_posts_counter
+  # def update_user_posts_counter
+  #   author.increment!(:posts_counter)
+  # end
+
+  after_save :update_post_counter
+
+  private
+
+  def update_post_counter
     author.increment!(:posts_counter)
   end
 
