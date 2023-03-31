@@ -3,7 +3,7 @@
   <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
-  <h3><b>Island Blogs</b></h3>
+  <h3><b>Island Blog</b></h3>
 
 </div>
 
