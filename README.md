@@ -174,12 +174,17 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
+Give a ⭐️ if you like this project!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+- Microverse
+- Hat tip to anyone whose code was used
+- Inspiration
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
