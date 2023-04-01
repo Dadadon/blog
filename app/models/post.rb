@@ -16,11 +16,11 @@ class Post < ApplicationRecord
 
   private
 
-  def update_post_counter
-    author.increment!(:posts_counter)
-  end
+  # def update_post_counter
+  #   author.increment!(:posts_counter)
+  # end
 
-  def recent_comments(num = 5)
-    comments.order(created_at: :desc).limit(num)
-  end
+  # def recent_comments(num = 5)
+  #   comments.order(created_at: :desc).limit(num)
+  # end
 end
