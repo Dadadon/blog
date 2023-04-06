@@ -3,10 +3,6 @@ class Comment < ApplicationRecord
   belongs_to :post, counter_cache: true
 
   validates :text, presence: true
-  # def self.update_post_comments_counter(comment)
-  #   post = comment.post
-  #   post.update(comments_counter: post.comments.counter)
-  # end
   after_save :update_post_comments_counter
 
   private
