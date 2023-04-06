@@ -5,7 +5,6 @@ class PostTest < ActiveSupport::TestCase
     @post = Post.new(title: 'Test Post', text: 'Test post body', author: @user)
   end
 
-
   test 'title should be present' do
     @post.title = ''
     assert_not @post.valid?
