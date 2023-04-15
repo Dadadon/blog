@@ -13,39 +13,39 @@
  *= require_tree .
  *= require_self
  */
- .empty-square {
-    width: 70px;
-    height: 70px;
-    border: 1px solid black;
-  }
-  
-  .u-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-  }
+.empty-square {
+  width: 70px;
+  height: 70px;
+  border: 1px solid black;
+}
 
-  .users-cont {
-    margin: 50px;
-  }
+.u-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
 
-  .u-info {
-    margin: 15px;
-    display: flex;
-    gap: 45px;
-    border: 2px solid #000;
-    width: 50%;
-  }
+.users-cont {
+  margin: 50px;
+}
 
-  .post-preview {
-    text-decoration: none;
-    margin-bottom: 25px;
-    border: 1px solid black;
-  }
+.u-info {
+  margin: 15px;
+  display: flex;
+  gap: 45px;
+  border: 2px solid #000;
+  width: 50%;
+}
 
-  .bio {
-    border: 1px solid black;
-  }
+.post-preview {
+  text-decoration: none;
+  margin-bottom: 25px;
+  border: 1px solid black;
+}
 
-  .comments {
-    border: 1px solid black;
-  }
+.bio {
+  border: 1px solid black;
+}
+
+.comments {
+  border: 1px solid black;
+}
