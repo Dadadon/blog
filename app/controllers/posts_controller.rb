@@ -40,6 +40,26 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
 
+  def like
+    @like = @post.likes.build(user: current_user)
+
+    if @like.save
+      redirect_to @post, notice: 'Post was successfully liked.'
+    else
+      redirect_to @post, alert: 'Unable to like post.'
+    end
+  end
+
+  def unlike
+    @like = @post.likes.find_by(user: current_user)
+
+    if @like.destroy
+      redirect_to @post, notice: 'Post was successfully unliked.'
+    else
+      redirect_to @post, alert: 'Unable to unlike post.'
+    end
+  end
+
   private
 
   def set_post
