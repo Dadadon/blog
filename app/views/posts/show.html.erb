@@ -1,1 +1,33 @@
-<h1>Displays user individual post</h1>
+<h2><%= @post.title %></h2>
+
+<div class="post-details">
+  <div class="post-author">
+    <h4><%= @post.author.name %></h4>
+  </div>
+  <div class="post-metadata">
+    <p><%= @post.created_at.strftime("%b %d, %Y") %></p>
+    <p>Number of comments: <%= @post.comments.count %></p>
+    <p>Number of likes: <%= @post.likes_counter %></p>
+  </div>
+</div>
+
+<p><%= @post.text %></p>
+
+<hr>
+
+<h3>Comments:</h3>
+
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<%# <%= render partial: 'comments/form', locals: { post: @post, comment: @comment } %> %>
+
+<%# <%= link_to 'Edit', edit_post_path(@post) %> |
+<%# <%= link_to 'Back', posts_path %>  %>
