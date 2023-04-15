@@ -48,6 +48,8 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'rails-controller-testing'
 gem 'rspec-rails', '~> 5.0.0'
+gem 'factory_bot_rails'
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
