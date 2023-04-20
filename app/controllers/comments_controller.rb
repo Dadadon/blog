@@ -1,9 +1,13 @@
 class CommentsController < ApplicationController
   before_action :set_post, only: %i[create destroy]
 
+  def new
+    @comment = Comment.new
+  end
+
   def create
     @comment = @post.comments.build(comment_params)
-    @comment.author = current_user
+    @comment.author_id = current_user.id
 
     if @comment.save
       @comment.update_post_comments_counter(@comment)
