@@ -1,5 +1,5 @@
 <div class="u-container">
-<%= image_tag @user.photo || "", class: "empty-square" %>
+<img class="u_image" src="<%= @user.photo ? @user.photo : 'https://images.unsplash.com/photo-1582567056798-7dc94989e56d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' %>">
     <div class="u-info">
     <h3><%= link_to @user.name, @user %></h3>
 
@@ -7,14 +7,20 @@
       Number of posts: <%= @user.posts_counter %>
     </div>
 </div>
-  <% Post.limit(3).each do |post| %>
+  <% @posts.each do |post| %>
+  
   <div class="post-preview">
+  <%= link_to user_post_path(@user, post) do %>
+  <h4>Post #<%= post.id %></h4>
     <h3><%= post.title %></h3>
+    <% end %>
     <p><%= post.text %></p>
   </div>
+  
 <% end %>
 
 <div class="comments">
 <h3>Comments:</h3>
 </div>
+ <button>Pagination</button>
 

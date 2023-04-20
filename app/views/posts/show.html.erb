@@ -20,7 +20,7 @@
 <ul>
   <% @post.comments.each do |comment| %>
     <li>
-      <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+      <p><strong><%= comment.author.name %>:</strong> <%= comment.text %></p>
     </li>
   <% end %>
 </ul>
