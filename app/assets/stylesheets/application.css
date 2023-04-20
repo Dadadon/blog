@@ -49,3 +49,8 @@
 .comments {
   border: 1px solid black;
 }
+
+.user_image {
+  height: 200px;
+  width: 200px;
+}
