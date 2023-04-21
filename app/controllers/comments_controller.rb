@@ -1,17 +1,16 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: %i[create destroy]
-
   def new
     @comment = Comment.new
   end
 
   def create
-    @comment = @post.comments.build(comment_params)
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:post_id])
+    @comment = Comment.new(comment_params)
     @comment.author_id = current_user.id
-
+    @comment.post = @user.posts.find(params['post_id'])
     if @comment.save
-      @comment.update_post_comments_counter(@comment)
-      redirect_to @post, notice: 'Comment was successfully created.'
+      redirect_to user_posts_path(@user), notice: 'Comment was successfully created.'
     else
       render 'posts/show'
     end
