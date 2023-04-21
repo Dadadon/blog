@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe 'post_index', type: :feature do
   before :each do
     @user1 = User.create(
-        name: 'David',
-        photo: 'https://unsplash.com/photos/vpwDZgKtgVk',
-        bio: 'User1 bio',
-        posts_counter: 0
+      name: 'David',
+      photo: 'https://unsplash.com/photos/vpwDZgKtgVk',
+      bio: 'User1 bio',
+      posts_counter: 0
     )
     @post1 = Post.create(title: 'post 1', text: 'new post 1', comments_counter: 0, likes_counter: 0, author: @user1)
     @post2 = Post.create(title: 'post 2', text: 'new post 2', comments_counter: 0, likes_counter: 0, author: @user1)
