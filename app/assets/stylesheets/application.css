@@ -22,6 +22,7 @@
 .u-container {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  padding-bottom: 1rem;
 }
 
 .users-cont {
@@ -50,7 +51,9 @@
   border: 1px solid black;
 }
 
-.user_image {
+.u_image {
   height: 200px;
   width: 200px;
+  border-radius: 50%;
 }
+
