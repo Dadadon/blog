@@ -1,29 +1,165 @@
-<h2><%= @post.title %></h2>
+<style>
+  /* Style for the post details section */
+  .post-details {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
 
-<div class="post-details">
-  <div class="post-author">
-    <h4><%= @post.author.name %></h4>
-  </div>
-  <div class="post-metadata">
-    <p><%= @post.created_at.strftime("%b %d, %Y") %></p>
-    <p>Number of comments: <%= @post.comments.count %></p>
-    <p>Number of likes: <%= @post.likes_counter %></p>
+  .post-author {
+    display: flex;
+    align-items: center;
+  }
+
+  .post-author h4 {
+    margin-left: 10px;
+  }
+
+  .post-metadata {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .post-metadata p {
+    margin: 5px 0;
+  }
+
+  /* Style for the comments section */
+  h3 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  ul li.media {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  img.rounded-circle {
+    border-radius: 50%;
+  }
+
+  button.add-post {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button.add-post:hover {
+    background-color: #0069d9;
+  }
+
+  /* Style for the body */
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f8f9fa;
+  }
+
+  /* Style for the container */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  /* Style for the row */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  /* Style for the columns */
+  .col-md-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  /* Style for the headings */
+  h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Style for the paragraph */
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  /* Style for the hr */
+  hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #ccc;
+  }
+</style>
+
+
+<div class="container">
+<a style="margin-right: 20px;" href="<%= new_user_post_path(@user) %>" class="btn btn-primary">New Post</a>
+      <a href="<%= destroy_user_session_path %>" data-method="delete" class="btn btn-secondary">Sign Out</a>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2><%= @post.title %></h2>
+
+      <div class="post-details d-flex justify-content-between align-items-center">
+        <div class="post-author">
+        <img class="rounded-circle img-fluid" src="<%= @post.author.photo ? @post.author.photo : 'https://images.unsplash.com/photo-1582567056798-7dc94989e56d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' %>" alt="Author Photo" width="100" height="100">
+
+          <h4><%= @post.author.name %></h4>
+        </div>
+        <div class="post-metadata">
+          <p><%= @post.created_at.strftime("%b %d, %Y") %></p>
+          <p>Number of comments: <%= @post.comments.count %></p>
+          <p>Number of likes: <%= @post.likes_counter %></p>
+        </div>
+      </div>
+
+      <p><%= @post.text %></p>
+
+      <hr>
+
+      <h3>Comments:</h3>
+
+      <ul class="list-unstyled">
+        <% @post.comments.each do |comment| %>
+          <li class="media my-4">
+            <img class="mr-3 rounded-circle" src="<%= comment.author.photo ? comment.author.photo : 'https://images.unsplash.com/photo-1582567056798-7dc94989e56d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' %>" alt="<%= comment.author.name %>" width="50" height="50">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1"><%= comment.author.name %></h5>
+              <p><%= comment.text %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+
+      <hr>
+
+      <%# <%= render partial: "comments/form", locals: { commentable: @post } %>
+      <%= link_to new_user_post_comment_path(@user, @post) do %>
+<button class="add-post">Add New Comment</button>
+<% end %>
+    </div>
   </div>
 </div>
 
-<p><%= @post.text %></p>
-
-<hr>
-
-<h3>Comments:</h3>
-
-<ul>
-  <% @post.comments.each do |comment| %>
-    <li>
-      <p><strong><%= comment.author.name %>:</strong> <%= comment.text %></p>
-    </li>
-  <% end %>
-</ul>
-
-<hr>
 

@@ -1,26 +1,42 @@
-<div class="u-container">
-<img class="u_image" src="<%= @user.photo ? @user.photo : 'https://images.unsplash.com/photo-1582567056798-7dc94989e56d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' %>">
-    <div class="u-info">
-    <h3><%= link_to @user.name, @user %></h3>
-
-      <br>
-      Number of posts: <%= @user.posts_counter %>
+<div style="display: flex; justify-content: center;">
+  <div style="width: 80%; max-width: 960px;">
+    <div style="display: flex; flex-direction: row; margin-bottom: 30px;">
+      <a style="margin-right: 20px;" href="<%= new_user_post_path(@user) %>" class="btn btn-primary">New Post</a>
+      <a href="<%= destroy_user_session_path %>" data-method="delete" class="btn btn-secondary">Sign Out</a>
     </div>
-</div>
-  <% @posts.each do |post| %>
-  
-  <div class="post-preview">
-  <%= link_to user_post_path(@user, post) do %>
-  <h4>Post #<%= post.id %></h4>
-    <h3><%= post.title %></h3>
-    <% end %>
-    <p><%= post.text %></p>
+    <div style="display: flex; flex-direction: row;">
+      <div style="width: 33.33%; margin-right: 30px;">
+        <div style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden;">
+          <img style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" src="<%= @user.photo ? @user.photo : 'https://images.unsplash.com/photo-1582567056798-7dc94989e56d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' %>" alt="User Profile Image">
+        </div>
+        <div style="margin-top: 20px;">
+          <h3><%= link_to @user.name, @user %></h3>
+          <p>Number of posts: <%= @user.posts_counter %></p>
+        </div>
+        <div style="margin-top: 20px;">
+          <h5>Bio</h5>
+          <p><%= @user.bio %></p>
+        </div>
+      </div>
+      <div style="width: 66.67%;">
+        <h2>Recent Posts</h2>
+        <% @posts.each do |post| %>
+          <div style="margin-bottom: 30px;">
+            <%= link_to user_post_path(@user, post) do %>
+              <h5>Post #<%= post.id %>: <%= post.title %></h5>
+              <p><%= post.text %></p>
+            <% end %>
+            <p style="margin-top: 10px; font-size: 14px; color: #6c757d;">Number of comments: <%= post.comments.count %></p>
+          </div>
+        <% end %>
+        <div class="comments">
+          <h3>Comments:</h3>
+        </div>
+        <button style="margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Pagination</button>
+      </div>
+    </div>
   </div>
-  
-<% end %>
-
-<div class="comments">
-<h3>Comments:</h3>
 </div>
- <button>Pagination</button>
+
+
 
