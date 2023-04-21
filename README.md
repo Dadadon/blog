@@ -129,6 +129,12 @@ To run tests, run the following command:
   bin/rails test test/models/article_test.rb
 ```
 
+To run tests on the views, run the following command:
+
+```sh
+  bin/rails bundle exec rspec spec/views
+```
+
 ### Deployment
 
 
