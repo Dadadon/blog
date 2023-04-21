@@ -145,6 +145,11 @@ To run tests, run the following command:
 - Twitter: [Davian Beroni](https://twitter.com/davianberoni)
 - LinkedIn: [Davian Beroni](https://www.linkedin.com/in/davian-beroni/)
 
+👤 **Juan Pablo Guerrero**
+
+- GitHub: [@juanpa8830](https://github.com/Juanpa8830)
+- LinkedIn: [Juan Pablo Guerrero](https://www.linkedin.com/in/juanpabloguerrerorios/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
