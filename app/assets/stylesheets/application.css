@@ -35,7 +35,7 @@
   border: 2px solid #000;
   width: 70%;
   justify-content: space-between;
-  height: fit-content;
+  height:auto;
 }
 
 .post-preview {
@@ -57,10 +57,10 @@
   width: 200px;
 }
 
-.u-name{
+.u-name {
   font-size: 50px;
 }
 
-.p-num{
+.p-num {
   align-self: self-end;
 }
