@@ -51,7 +51,7 @@
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Ruby on rails</a></li>
+    <li><a href="https://rubyonrails.org/">Ruby on rails</a></li>
   </ul>
 </details>
 
@@ -150,6 +150,11 @@ To run tests on the views, run the following command:
 - GitHub: [dadadon](https://github.com/dadadon)
 - Twitter: [Davian Beroni](https://twitter.com/davianberoni)
 - LinkedIn: [Davian Beroni](https://www.linkedin.com/in/davian-beroni/)
+
+👤 **Iqbal Elham**
+
+- GitHub: [dadadon](https://github.com/iqbal-elham)
+- LinkedIn: [Davian Beroni](https://www.linkedin.com/in/iqbal-elham/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
