@@ -50,7 +50,7 @@ RSpec.describe 'user_show', type: :feature do
   end
 
   it 'When I click on a post, it redirects me to that posts show page.' do
-    click_link "#{@post7.title}"
+    click_link @post7.title.to_s
     expect(page).to have_current_path(user_post_path(@user1, @post7))
   end
 end
