@@ -47,6 +47,8 @@ gem 'bootsnap', require: false
 # gem "sassc-rails"
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+gem 'bootstrap', '~> 5.1.0'
+gem 'devise'
 gem 'factory_bot_rails'
 gem 'rails-controller-testing'
 gem 'rspec-rails', '~> 5.0.0'

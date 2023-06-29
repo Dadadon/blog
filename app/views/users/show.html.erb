@@ -1,31 +1,76 @@
-<div>
-<div class="u-container">
-<%# <h1>Displays user info</h1> %>
-<img class="user_image" src="<%= @user.photo ? @user.photo : 'https://images.unsplash.com/photo-1582567056798-7dc94989e56d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' %>">
-    <div class="u-info">
-    <h3 class="u-name"><%= link_to @user.name, @user %></h3>
+<style>
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-      <br>
-      <p class="p-num">Number of posts: <%= @user.posts_counter %></p>
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+}
+
+.card-text {
+  margin: 0;
+}
+
+.recent-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.recent-post p {
+  margin-bottom: 5px;
+}
+
+.card-img-top {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+</style>
+
+<div class="container">
+<a style="margin-right: 20px;" href="<%= new_user_post_path(@user) %>" class="btn btn-primary">New Post</a>
+      <a href="<%= destroy_user_session_path %>" data-method="delete" class="btn btn-secondary">Sign Out</a>
+  <div class="row justify-content-center align-items-center">
+    <div class="col-lg-4 col-md-6 col-sm-8">
+      <div class="card mb-4">
+        <img class="card-img-top" src="<%= @user.photo ? @user.photo : 'https://images.unsplash.com/photo-1582567056798-7dc94989e56d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' %>" alt="User photo">
+        <div class="card-body">
+          <h5 class="card-title"><%= @user.name %></h5>
+          <p class="card-text">Number of posts: <%= @user.posts_counter %></p>
+          <hr>
+          <h6>Bio</h6>
+          <p class="card-text"><%= @user.bio %></p>
+          <hr>
+          <h6>Recent Posts</h6>
+          <% @user.recent_posts.each do |post| %>
+            <div class="recent-post">
+            <%= link_to user_post_path(@user, post) do %>
+              <h6 class="card-title"><%= post.title %></h6>
+              <% end %>
+              <p class="card-text"><%= post.text %></p>
+              <p class="card-text">Number of comments: <%= post.comments.count %></p>
+              <p class="card-text">Number of likes: <%= post.likes_counter %></p>
+            </div>
+          <% end %>
+          <% if Post.count > 3 %>
+            <%= link_to "Show All Posts", user_posts_path(@user), class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
- <div class="bio">
-      <h5>Bio</h5>
-      <p><%= @user.bio %></p>
-  </div>
-  <h2>Recent Posts</h2>
-<% @user.recent_posts.each do |post| %>
-  <div class="post-preview">
-  <%= link_to user_post_path(@user, post) do %>
-    <h3><%= post.title %></h3>
-    <% end %>
-    <p><%= post.text %></p>
-    <p>Number of comments: <%= post.comments.count %></p>
-    <p>Number of likes: <%= post.likes_counter %></p>
-  </div>
-<% end %>
 
-  <div>
-    <%= link_to "Show All Posts", user_posts_path(@user) %>
-  </div>
-</div>
